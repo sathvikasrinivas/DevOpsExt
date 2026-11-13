@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Login Page</title>
+  <title>Modern Login Page</title>
   <style>
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
@@ -17,85 +17,141 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f0f2f5;
+      /* Updated dark slate gradient background */
+      background: linear-gradient(135deg, #1e293b, #0f172a);
     }
 
     .login-card {
-      background-color: #ffffff;
-      padding: 2rem;
-      border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      background-color: #1e293b;
+      padding: 2.2rem;
+      border-radius: 12px;
+      border: 1px solid #334155;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
       width: 100%;
-      max-width: 360px;
+      max-width: 380px;
     }
 
     .login-card h2 {
       text-align: center;
       margin-bottom: 1.5rem;
-      color: #333333;
+      color: #f8fafc;
+      letter-spacing: 0.5px;
     }
 
     .input-group {
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
 
     .input-group label {
       display: block;
       margin-bottom: 0.4rem;
-      font-size: 0.9rem;
-      color: #555555;
+      font-size: 0.85rem;
+      color: #cbd5e1;
     }
 
     .input-group input {
       width: 100%;
-      padding: 0.75rem;
-      border: 1px solid #cccccc;
-      border-radius: 4px;
-      font-size: 1rem;
+      padding: 0.75rem 0.9rem;
+      background-color: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #f8fafc;
+      transition: border-color 0.2s;
+    }
+
+    .input-group input::placeholder {
+      color: #64748b;
     }
 
     .input-group input:focus {
       outline: none;
-      border-color: #007bff;
+      border-color: #10b981;
+    }
+
+    /* Wrapper for password input + toggle button */
+    .password-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .password-wrapper input {
+      padding-right: 3.5rem;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      right: 10px;
+      background: none;
+      border: none;
+      color: #10b981;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .toggle-btn:hover {
+      color: #34d399;
     }
 
     .login-btn {
       width: 100%;
-      padding: 0.75rem;
-      background-color: #007bff;
+      padding: 0.8rem;
+      background-color: #10b981;
       border: none;
-      border-radius: 4px;
-      color: #ffffff;
+      border-radius: 6px;
+      color: #0f172a;
       font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
       margin-top: 0.5rem;
+      transition: background-color 0.2s;
     }
 
     .login-btn:hover {
-      background-color: #0056b3;
+      background-color: #059669;
     }
   </style>
 </head>
 <body>
 
   <div class="login-card">
-    <h2>Login</h2>
+    <h2>Welcome Back</h2>
     <form action="/login" method="POST">
       <div class="input-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required>
         <label for="username">Username or Email Address</label>
         <input type="text" id="username" name="username" required>
       </div>
       
       <div class="input-group">
         <label for="password">Password</label>
-        <input type="password" id="password" name="password" required>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" placeholder="Min. 8 characters" minlength="8" required>
+          <button type="button" class="toggle-btn" onclick="togglePassword()">Show</button>
+        </div>
       </div>
 
-      <button type="submit" class="login-btn">Log In</button>
+      <button type="submit" class="login-btn">Sign In</button>
     </form>
   </div>
 
+  <script>
+    function togglePassword() {
+      const passwordInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-btn');
+      
+      if (passwordInput.type === 'password') {
+        passwordInput.type = 'text';
+        toggleBtn.textContent = 'Hide';
+      } else {
+        passwordInput.type = 'password';
+        toggleBtn.textContent = 'Show';
+      }
+    }
+  </script>
+
 </body>
 </html>
-
